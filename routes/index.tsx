@@ -12,10 +12,12 @@ export default function Home() {
       <Head>
         <title>Anna Adventure</title>
         <link crossorigin={"use-credential"} rel={"manifest"} href={"/manifest.json"} />
+        <meta name="theme-color" content="#1a73e8" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <img
-          src="/logo.svg"
+          src="/logo.png"
           class="w-32 h-32"
           alt="the fresh logo: a sliced lemon dripping with juice"
         />

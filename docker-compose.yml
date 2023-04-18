@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    stdin_open: true
+    command: task start
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app

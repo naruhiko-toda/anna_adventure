@@ -7,7 +7,7 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "path/to/icon.png",
+      "src": "./logo.svg",
       "sizes": "192x192",
       "type": "image/png"
     }

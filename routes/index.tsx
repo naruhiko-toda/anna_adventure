@@ -1,11 +1,17 @@
-import { Head } from "$fresh/runtime.ts";
+import {Head} from "$fresh/runtime.ts";
 import Counter from "../islands/Counter.tsx";
+import {useEffect} from "preact/hooks";
+import {setServiceWorker} from "../utils/setServiceWorker.tsx";
 
 export default function Home() {
+  useEffect(() => {
+    setServiceWorker();
+  }, []);
   return (
     <>
       <Head>
-        <title>Fresh App</title>
+        <title>Anna Adventure</title>
+        <link crossorigin={"use-credential"} rel={"manifest"} href={"/manifest.json"} />
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <img

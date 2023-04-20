@@ -4,16 +4,14 @@ import {useEffect} from "preact/hooks";
 import {setServiceWorker} from "../utils/setServiceWorker.tsx";
 
 export default function Home() {
-  useEffect(() => {
-    setServiceWorker();
-  }, []);
   return (
     <>
       <Head>
         <title>Anna Adventure</title>
-        <link crossorigin={"use-credential"} rel={"manifest"} href={"/manifest.json"} />
+        <link crossorigin={"use-credentials"} rel={"manifest"} href={"/manifest.json"} />
         <meta name="theme-color" content="#1a73e8" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script>{setServiceWorker()}</script>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <img

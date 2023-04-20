@@ -1,4 +1,7 @@
 export function setServiceWorker() {
+  console.log("start setServiceWorker")
+  console.log(navigator)
+  console.log('serviceWorker' in navigator)
   if ('serviceWorker' in navigator) {
     console.log("this application has service worker, so please install!!")
     navigator.serviceWorker

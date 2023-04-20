@@ -1,5 +1,6 @@
 export function setServiceWorker() {
   if ('serviceWorker' in navigator) {
+    console.log("this application has service worker, so please install!!")
     navigator.serviceWorker
       .register('/sw.js')
       .then((registration) => {

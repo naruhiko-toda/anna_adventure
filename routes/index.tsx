@@ -11,7 +11,6 @@ export default function Home() {
         <link crossorigin={"use-credentials"} rel={"manifest"} href={"/manifest.json"} />
         <meta name="theme-color" content="#1a73e8" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <script>{setServiceWorker()}</script>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <img
@@ -24,6 +23,7 @@ export default function Home() {
           file, and refresh.
         </p>
         <Counter start={3} />
+        <setServiceWorker>
       </div>
     </>
   );

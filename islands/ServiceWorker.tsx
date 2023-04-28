@@ -1,4 +1,4 @@
-export function setServiceWorker() {
+export function ServiceWorker() {
   console.log("start setServiceWorker")
   console.log(navigator)
   console.log('serviceWorker' in navigator)

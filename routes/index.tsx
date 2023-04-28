@@ -1,7 +1,7 @@
 import {Head} from "$fresh/runtime.ts";
 import Counter from "../islands/Counter.tsx";
 import {useEffect} from "preact/hooks";
-import {setServiceWorker} from "../utils/setServiceWorker.tsx";
+import {setServiceWorker} from "../islands/ServiceWorker.tsx";
 
 export default function Home() {
   return (

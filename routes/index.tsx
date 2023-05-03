@@ -9,7 +9,6 @@ export default function Home() {
         <link crossorigin={"use-credentials"} rel={"manifest"} href={"/manifest.json"} />
         <meta name="theme-color" content="#1a73e8" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link href="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate" />
         <script type="text/javascript" src="/serviceWorker.js"></script>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">

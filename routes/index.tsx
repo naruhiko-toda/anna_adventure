@@ -1,7 +1,5 @@
 import {Head} from "$fresh/runtime.ts";
 import Counter from "../islands/Counter.tsx";
-import {useEffect} from "preact/hooks";
-import {ServiceWorker} from "../islands/ServiceWorker.tsx";
 
 export default function Home() {
   return (
@@ -11,6 +9,8 @@ export default function Home() {
         <link crossorigin={"use-credentials"} rel={"manifest"} href={"/manifest.json"} />
         <meta name="theme-color" content="#1a73e8" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link href="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate" />
+        <script type="text/javascript" src="/serviceWorker.js"></script>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
         <img
@@ -23,7 +23,6 @@ export default function Home() {
           file, and refresh.
         </p>
         <Counter start={3} />
-        <ServiceWorker/>
       </div>
     </>
   );

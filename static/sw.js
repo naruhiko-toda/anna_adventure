@@ -1,12 +1,13 @@
-self.addEventListener('install', (event) => {
+var CACHE_NAME = 'v1';
+var urlsToCache = [
+  '/',
+];
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v1').then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.tsx',
-        '/logo.svg',
-      ]);
-    })
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        return cache.addAll(urlsToCache.map(url => new Request(url, {credentials: 'same-origin'})));
+      })
   );
 });
 

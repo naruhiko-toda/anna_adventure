@@ -35,6 +35,6 @@ export default function Main() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} id="maincanvas" width="640" height="480"/>
+    <canvas ref={canvasRef} id="maincanvas" width="2000" height="1000"/>
   );
 }

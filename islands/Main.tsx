@@ -56,7 +56,10 @@ export default function Main() {
         console.log("x=", x)
         console.log("y=", y)
         if (image) {
-          ctx?.drawImage(image, x, y, image.width * 0.1, image.height * 0.1);
+          const scale = 0.1; // 表示サイズを調整
+          const w = image.width * scale;
+          const h = image.height * scale;
+          ctx?.drawImage(image, x, y, w, h);
         }
         window.requestAnimationFrame(refresh);
       }
@@ -67,6 +70,6 @@ export default function Main() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} id="maincanvas" width="2000" height="1000"/>
+    <canvas ref={canvasRef} id="maincanvas" width="1400" height="800"/>
   );
 }

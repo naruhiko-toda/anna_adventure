@@ -30,7 +30,11 @@ export default function Main() {
         };
       }
       let x = 0;
-      let y = 0;
+      let y = 300;
+      // 上下方向の速度
+      var vy = 0;
+      // ジャンプしたか否かのフラグ値
+      var isJump = false;
 
       function refresh() {
         console.log("refresh")
@@ -40,23 +44,30 @@ export default function Main() {
           x--;
         }
         if (input_key_buffer[38]) {
-          // 上が押されていればy座標を1減らす
-          y--;
+          vy = -7;
+          isJump = true;
         }
         if (input_key_buffer[39]) {
           // 右が押されていればx座標を1増やす
           x++;
         }
-        if (input_key_buffer[40]) {
-          // 下が押されていればy座標を1増やす
-          y++;
+
+        if (isJump) {
+          // 上下方向は速度分をたす
+          y = y + vy;
+
+          // 落下速度はだんだん大きくなる
+          vy = vy + 0.5;
+        }
+        if (y > 300) {
+          y = 300;
         }
 
         const image = imageRef.current;
         console.log("x=", x)
         console.log("y=", y)
         if (image) {
-          const scale = 0.1; // 表示サイズを調整
+          const scale = 0.05; // 表示サイズを調整
           const w = image.width * scale;
           const h = image.height * scale;
           ctx?.drawImage(image, x, y, w, h);

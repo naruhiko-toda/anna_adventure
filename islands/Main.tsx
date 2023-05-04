@@ -13,7 +13,6 @@ export default function Main() {
         image.src = "/images/anna/base.jpg";
         image.onload = () => {
           imageRef.current = image;
-          refresh();
         };
       }
 
@@ -27,15 +26,16 @@ export default function Main() {
         window.requestAnimationFrame(refresh);
       }
 
-      window.addEventListener("load", loadImage);
+      loadImage();
+      window.requestAnimationFrame(refresh);
 
       return () => {
-        window.removeEventListener("load", loadImage);
+        window.cancelAnimationFrame(refresh);
       };
     }
   }, []);
 
   return (
-    <canvas ref={canvasRef} id="maincanvas" width="640" height="480"></canvas>
+    <canvas ref={canvasRef} id="maincanvas" width="640" height="480"/>
   );
 }

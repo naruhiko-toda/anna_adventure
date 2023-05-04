@@ -15,23 +15,22 @@ export default function Main() {
           imageRef.current = image;
         };
       }
+      let x = 0;
 
       function refresh() {
+        console.log("refresh")
         ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        x = x + 1;
 
         const image = imageRef.current;
         if (image) {
-          ctx?.drawImage(image, 0, 0, image.width * 0.1, image.height * 0.1);
+          ctx?.drawImage(image, x, 0, image.width * 0.1, image.height * 0.1);
         }
         window.requestAnimationFrame(refresh);
       }
 
       loadImage();
       window.requestAnimationFrame(refresh);
-
-      return () => {
-        window.cancelAnimationFrame(refresh);
-      };
     }
   }, []);
 

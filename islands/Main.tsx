@@ -1,35 +1,36 @@
 import { useEffect, useRef } from "preact/hooks";
 
 export default function Main() {
-  // canvas要素の取得
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
-    // canvas要素がレンダリングされた後に実行される処理
     if (canvasRef.current) {
       const ctx = canvasRef.current.getContext("2d");
 
-      // 画面を更新する関数を定義 (繰り返しここの処理が実行される)
-      function update() {
-        // 画面全体をクリア
-        ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-
-        // 主人公の画像を表示
+      function loadImage() {
         const image = new Image();
-        image.onload = () => {
-          ctx?.drawImage(image, 0, 0);
-          // 再描画
-          window.requestAnimationFrame(update);
-        };
         image.src = "/images/anna/base.jpg";
+        image.onload = () => {
+          imageRef.current = image;
+          refresh();
+        };
       }
 
-      // ロード時に画面描画の処理が実行されるようにする
-      window.addEventListener("load", update);
+      function refresh() {
+        ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
-      // cleanup関数を返して、windowのloadイベントリスナーを削除する
+        const image = imageRef.current;
+        if (image) {
+          ctx?.drawImage(image, 0, 0, image.width * 0.1, image.height * 0.1);
+        }
+        window.requestAnimationFrame(refresh);
+      }
+
+      window.addEventListener("load", loadImage);
+
       return () => {
-        window.removeEventListener("load", update);
+        window.removeEventListener("load", loadImage);
       };
     }
   }, []);
